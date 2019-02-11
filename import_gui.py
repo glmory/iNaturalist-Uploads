@@ -33,7 +33,7 @@ def input_data():
     
     # Every photo contained in subfolders in this folder will be uploaded. The
     # species will be the name of the folder the photo was placed in. 
-    folder_name = 'E:/My Documents/Pictures/a6300/Test Folder'
+    folder_name = 'C:/My Documents/Pictures/Photos to Upload'
     
     # It appears all the time zones here are accepted:
     # https://gist.github.com/mjrulesamrat/0c1f7de951d3c508fb3a20b4b0b33a98
