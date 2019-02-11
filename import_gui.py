@@ -28,8 +28,8 @@ def input_data():
     
     # You will need to make an app to be able to use this code 
     # https://www.inaturalist.org/oauth/applications/new
-    app = 'e4d9505ef7e814513d0a225e2e6555846765a84ceda7034eb454722e8047b68b'
-    secret = 'b3766331e211b4a3e5fe34d4b51dd67f96d5deabd87c5837d823ce326a7bd0cd'
+    app = ''
+    secret = ''
     
     # Every photo contained in subfolders in this folder will be uploaded. The
     # species will be the name of the folder the photo was placed in. 
