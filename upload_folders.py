@@ -70,15 +70,23 @@ for folder in directories:
 
 # Uploads photos in sub folders contained in species folders. These upload all
 # Photos as a single observation.
-subdirectories = []
+
+
 for folder in directories:
         subfolder = folder_name +'/' + folder + '/'
-        for root, dirs, files in os.walk(subfolder):
-            if dirs:
-                subsubfolder = subfolder + dirs[0]+ '/'
-                upload_folder_multiple(subfolder, subsubfolder,
-                                       uploaded_folder, time_zone, accuracy,
-                                       user, passw, app, secret)
-      
+        try: 
+            for root, dirs, files in os.walk(subfolder):
+                print('dirs' + dirs[0])
+                for directory in dirs:
+                    subsubfolder = subfolder + directory + '/'
+                    upload_folder_multiple(subfolder, subsubfolder,
+                                           uploaded_folder, time_zone, 
+                                           accuracy, user, passw, app, secret)
+        except:
+            pass
+
+
+
+        
 
 print("Program complete")

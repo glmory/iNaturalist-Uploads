@@ -1,6 +1,7 @@
 """ This file includes all the functions used in the associated file
 upload_folders.py. This is primarily functions associated with getting exif 
-data from the photos and uploading the files to iNaturalist."""
+data from the photos, choosing a taxa based on the name of the folder
+and uploading the files to iNaturalist."""
 
 import shutil
 import os
@@ -251,8 +252,10 @@ def upload_folder_multiple(species_folder, folder, uploaded_folder,
     
     new_observation_id = r[0]['id']
 
+    print('Uploaded as observation #' + str(new_observation_id))
+    print('Uploading photos')
     for file in jpgs:
-        print('uploading' + str(file) + ' TO ' + str(jpgs[0]))
+        print('uploading ' + str(file) + ' TO ' + new_observation_id))
         r = add_photo_to_observation(observation_id=new_observation_id,
                     file_object=open(file, 'rb'),
                     access_token=token) 
