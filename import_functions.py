@@ -63,18 +63,21 @@ def get_lat_long(image):
     
     # Returns a list with both latitude and longiude in decimal format.
     return latitude_longitude
-    
+
+
+
 # Pulls the date information from 
 def get_date(image):
-    # Gets all the exif data from the photo
-    exif = {
-        PIL.ExifTags.TAGS[k]: v
-        for k, v in image._getexif().items()
-        if k in PIL.ExifTags.TAGS
-    }
-    # Pulls the date and time from the exif format
-    date = exif.get('DateTime').split()[0]
-    time = exif.get('DateTime').split()[1]
+
+    # Pulls the date and time from the exif format, had to use 36867 to get
+    # the time the image was taken
+    
+    date_and_time = PIL.Image.open(image)._getexif()[36867]
+    
+    # Splits it to separate date and time
+    date = date_and_time.split()[0]
+    time = date_and_time.split()[1]
+
     # Reformats the date to use - instead of : 
     for character in date:
         if character == ':':
@@ -107,6 +110,7 @@ def get_taxon(folder):
 
     return [species, taxon]
 
+
 #Uploads all photos in a folder, each photo is an individual observation.
 def upload_folder_single(folder, uploaded_folder, time_zone, accuracy, 
                          user, passw, app, secret):
@@ -138,8 +142,7 @@ def upload_folder_single(folder, uploaded_folder, time_zone, accuracy,
             except:
                 coordinates = 'No Coordinates'
             try:
-                img = PIL.Image.open(file)
-                date_time = get_date(img)
+                date_time = get_date(file)
                 img.close()
             except:
                 date_time = 'No Date or Time'
