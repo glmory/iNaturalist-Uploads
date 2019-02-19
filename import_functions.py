@@ -255,7 +255,7 @@ def upload_folder_multiple(species_folder, folder, uploaded_folder,
     print('Uploaded as observation #' + str(new_observation_id))
     print('Uploading photos')
     for file in jpgs:
-        print('uploading ' + str(file) + ' TO ' + new_observation_id))
+        print('uploading ' + str(file) + ' TO ' + str(new_observation_id))
         r = add_photo_to_observation(observation_id=new_observation_id,
                     file_object=open(file, 'rb'),
                     access_token=token) 
