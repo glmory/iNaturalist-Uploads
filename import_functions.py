@@ -224,8 +224,7 @@ def upload_folder_multiple(species_folder, folder, uploaded_folder,
     except:
         coordinates = 'No Coordinates'
     try:
-        img = PIL.Image.open(file)
-        date_time = get_date(img)
+        date_time = get_date(file)
         img.close()
     except:
         date_time = 'No Date or Time'
